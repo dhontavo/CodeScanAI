@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeScanAI.Views.ResultPage"
+             Title="{Binding Title}">
+
+    <Grid RowDefinitions="*, Auto" Padding="20">
+
+        <ScrollView Grid.Row="0">
+            <Label Text="{Binding Result}"
+                   FontSize="14" LineHeight="1.6"/>
+        </ScrollView>
+
+        <Button Grid.Row="1"
+                Text="Copiar resultado"
+                Clicked="OnCopyClicked"
+                BackgroundColor="#1B4F72"
+                TextColor="White"
+                CornerRadius="10"
+                Margin="0,12,0,0"/>
+    </Grid>
+</ContentPage>

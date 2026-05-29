@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CodeScanAI.ViewModels"
+             x:Class="CodeScanAI.Views.HomePage"
+             Title="CodeScan AI">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label Text="Analiza tu codigo con IA"
+                   FontSize="22" FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Tipo de analisis" FontSize="13" TextColor="Gray"/>
+            <Picker ItemsSource="{Binding AnalysisTypes}"
+                    ItemDisplayBinding="{Binding Label}"
+                    SelectedItem="{Binding SelectedAnalysisItem}"
+                    TextColor="AliceBlue"/>
+
+            <Label Text="Tu codigo" FontSize="13" TextColor="Gray"/>
+            <Editor Text="{Binding Code}"
+                    Placeholder="// Pega tu codigo aqui..."
+                    HeightRequest="200"
+                    FontFamily="Courier New"
+                    FontSize="13"
+                    BackgroundColor="#F5F5F5"
+                    TextColor="Black"/>
+
+            <ActivityIndicator IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"
+                               Color="#1B4F72"
+                               HorizontalOptions="Center"/>
+
+            <Button Text="Analizar con IA"
+                    Command="{Binding AnalyzeCommand}"
+                    IsEnabled="{Binding IsLoading, Converter={StaticResource InvertBool}}"
+                    BackgroundColor="#1B4F72"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
